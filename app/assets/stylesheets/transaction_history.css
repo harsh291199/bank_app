@@ -1,0 +1,24 @@
+.centered-content {
+  text-align: center;
+}
+
+.centered-table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.centered-table th {
+  padding: 8px; /* Adjust the value to control the amount of space between th and border */
+}
+
+.centered-table td {
+  border: 1px solid black;
+  padding: 8px; /* Adjust the value to control the amount of space between td and border */
+}
+
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+}

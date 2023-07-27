@@ -1,0 +1,7 @@
+<div class="container">
+  <% flash.each do |name, msg| %>
+  <div>
+    <%= content_tag :span, msg, style: "color: #{name == 'notice' ? 'green' : 'red'};" %>
+  </div>
+  <% end %>
+</div>

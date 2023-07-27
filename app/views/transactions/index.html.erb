@@ -1,0 +1,41 @@
+<div class="centered-content">
+  <h1>Bank Balance: <%= @current_user.bank_account.balance %></h1>
+  <div class="logout-button">
+    <% if @current_user %>
+      <%= form_tag session_path, method: :delete do %>
+        <%= submit_tag 'Logout' %>
+      <% end %>
+    <% end %>
+  </div>
+  <h1>Transaction History</h1>
+
+  <%= stylesheet_link_tag 'transaction_history' %>
+  <table class="centered-table">
+    <thead>
+      <tr>
+        <div>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Balance</th>
+        </div>
+      </tr>
+    </thead>
+    <tbody>
+      <% @transactions.each do |transaction| %>
+        <tr>
+          <td><%= transaction.created_at.strftime('%d-%m-%Y') %></td>
+          <td><%= transaction.created_at.strftime('%H:%M:%S') %></td>
+          <td><%= transaction.transaction_type %></td>
+            <% if transaction.transaction_type == 'Deposit' %> 
+              <td style="color: green">+ <%= transaction.amount %></td>
+            <% else %>
+              <td style="color: red">- <%= transaction.amount %></td>
+            <% end %>
+          <td><%= transaction.bank_balance %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
